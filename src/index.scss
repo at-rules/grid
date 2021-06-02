@@ -1,6 +1,6 @@
-@import "./helpers";
-
 @use "sass:math";
+
+@import "./helpers";
 
 $c: #{str-replace(".cell", ".", "")};
 
