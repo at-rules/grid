@@ -1,0 +1,81 @@
+@use "./helpers";
+@use "sass:math";
+
+$c: #{helpers.str-replace(".cell", ".", "")};
+
+.grid {
+  &-container {
+    max-width: helpers.$grid-max-width;
+    margin: 0 auto;
+    padding-right: math.div(helpers.$grid-gutter, 2);
+    padding-left: math.div(helpers.$grid-gutter, 2);
+
+    &.fluid {
+      margin: 0;
+      padding: 0;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+  }
+
+  &-x {
+    display: flex;
+    flex-flow: row wrap;
+
+    > .auto,
+    > .shrink {
+      width: auto;
+    }
+
+    > .auto {
+      flex: 1 1 auto;
+    }
+
+    > .shrink {
+      flex: 0 0 auto;
+    }
+  }
+}
+
+.cell {
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.grid-margin-x {
+  margin-left: math.div(-(helpers.$grid-gutter), 2);
+  margin-right: math.div(-(helpers.$grid-gutter), 2);
+
+  > .cell {
+    width: calc(100% - #{helpers.$grid-gutter});
+    margin-left: math.div(helpers.$grid-gutter, 2);
+    margin-right: math.div(helpers.$grid-gutter, 2);
+
+    &.auto,
+    &.shrink {
+      width: auto !important;
+    }
+  }
+
+  @include helpers.generateColClasses() using($i) {
+    $w: (math.div(100, math.div(helpers.$grid-col-size, $i)) * 1%);
+
+    width: calc(#{$w} - #{helpers.$grid-gutter});
+  }
+
+  @include helpers.generateScopedColClasses("offset") using($i) {
+    $w: (math.div(100, math.div(helpers.$grid-col-size, $i)) * 1%);
+    $x: math.div(helpers.$grid-gutter, 2);
+
+    margin-left: calc(#{$w} + #{$x});
+  }
+}
+
+.grid-margin-y > .cell {
+  margin-top: math.div(helpers.$grid-gutter, 2);
+  margin-bottom: math.div(helpers.$grid-gutter, 2);
+}
+
+@include helpers.generateColClasses() using($i) {
+  width: (math.div(100, math.div(helpers.$grid-col-size, $i)) * 1%);
+}

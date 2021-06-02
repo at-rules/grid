@@ -1,0 +1,60 @@
+@use "~@at-rules/breakpoints/src/index" as *;
+
+$grid-col-size: 12 !default;
+$grid-gutter: 1rem !default;
+$grid-max-width: 1140px !default;
+
+@function str-replace($string, $search, $replace: "") {
+  $index: str-index($string, $search);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace +
+      str-replace(
+        str-slice($string, $index + str-length($search)),
+        $search,
+        $replace
+      );
+  }
+
+  @return $string;
+}
+
+@mixin generateColClasses($className: null) {
+  @each $breakpointName, $breakpointSize in $breakpoints {
+    @include breakpoint($breakpointName up) {
+      @for $i from 1 through $grid-col-size {
+        @if ($className) {
+          .#{$breakpointName}-#{$className}-#{$i} {
+            @content ($i);
+          }
+        }
+
+        @else {
+          .#{$breakpointName}-#{$i} {
+            @content ($i);
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin generateScopedColClasses($className: null) {
+  @each $breakpointName, $breakpointSize in $breakpoints {
+    @include breakpoint($breakpointName up) {
+      @for $i from 1 through $grid-col-size {
+        @if ($className) {
+          & > .#{$breakpointName}-#{$className}-#{$i} {
+            @content ($i);
+          }
+        }
+
+        @else {
+          & > .#{$breakpointName}-#{$i} {
+            @content ($i);
+          }
+        }
+      }
+    }
+  }
+}
