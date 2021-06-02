@@ -1,4 +1,4 @@
-@use "~@at-rules/breakpoints/src/index" as *;
+@import "~@at-rules/breakpoints/src/index";
 
 $grid-col-size: 12 !default;
 $grid-gutter: 1rem !default;
