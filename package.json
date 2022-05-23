@@ -12,7 +12,7 @@
   "main": "src/index.css",
   "style": "src/index.scss",
   "scripts": {
-    "test": "jest --env=node",
+    "test": "exit",
     "lint": "stylelint src/**/*.scss"
   },
   "dependencies": {
