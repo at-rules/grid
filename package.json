@@ -1,8 +1,12 @@
 {
   "name": "@at-rules/grid",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Fully customisable flex grid",
   "repository": "git@github.com:at-rules/grid.git",
+  "bugs": {
+    "url": "https://github.com/at-rules/grid/issues"
+  },
+  "homepage": "https://github.com/at-rules/grid#readme",
   "license": "MIT",
   "author": "Kyle Essex <kylegavinessex@hotmail.com>",
   "main": "src/index.css",
@@ -12,7 +16,7 @@
     "lint": "stylelint src/**/*.scss"
   },
   "dependencies": {
-    "@at-rules/breakpoints": "git+https://github.com/at-rules/breakpoints.git",
+    "@at-rules/breakpoints": "^1.0",
     "sass": "^1.34.0"
   },
   "devDependencies": {
