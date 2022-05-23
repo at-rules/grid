@@ -6,6 +6,19 @@
   "bugs": {
     "url": "https://github.com/at-rules/grid/issues"
   },
+  "keywords": [
+    "scss",
+    "sass",
+    "grid",
+    "flex",
+    "flexbox",
+    "css",
+    "plug and play",
+    "library",
+    "customisable",
+    "responsive",
+    "layout"
+  ],
   "homepage": "https://github.com/at-rules/grid#readme",
   "license": "MIT",
   "author": "Kyle Essex <kylegavinessex@hotmail.com>",
